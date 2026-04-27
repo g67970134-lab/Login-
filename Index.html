@@ -1,50 +1,66 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
+<title>Login Page</title>
 </head>
-<body style="margin:0; font-family: Arial; display:flex; justify-content:center; align-items:center; height:100vh; background: linear-gradient(135deg,#6a11cb,#2575fc); overflow:hidden;"><div id="box" style="background:white; padding:30px; border-radius:20px; width:300px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); transform: scale(0.8); opacity:0; transition: all 0.6s ease;">
-    <h2 style="margin-bottom:20px;">Login</h2><input id="name" type="text" placeholder="Enter Name" 
-style="width:90%; padding:10px; margin:10px 0; border-radius:10px; border:1px solid #ccc; outline:none; transition:0.3s;">
 
-<input id="password" type="password" placeholder="Enter Password" 
-style="width:90%; padding:10px; margin:10px 0; border-radius:10px; border:1px solid #ccc; outline:none; transition:0.3s;">
+<body style="margin:0; font-family:Arial; background:linear-gradient(135deg,#4facfe,#00f2fe); display:flex; justify-content:center; align-items:center; height:100vh; overflow:hidden;">
 
-<button onclick="login()" 
-style="margin-top:15px; padding:10px 20px; border:none; border-radius:20px; background:#2575fc; color:white; cursor:pointer; transition:0.3s;">
-    Register
+<div style="background:white; padding:30px; border-radius:20px; width:300px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.2); animation:fadeIn 1.2s ease;">
+
+<h2 style="margin-bottom:20px;">Login</h2>
+
+<input id="name" type="text" placeholder="Enter Name"
+style="width:90%; padding:10px; margin:10px 0; border-radius:10px; border:1px solid #ccc; outline:none; transition:0.3s;"
+onfocus="this.style.border='1px solid #4facfe'"
+onblur="this.style.border='1px solid #ccc'">
+
+<input id="password" type="password" placeholder="Enter Password"
+style="width:90%; padding:10px; margin:10px 0; border-radius:10px; border:1px solid #ccc; outline:none; transition:0.3s;"
+onfocus="this.style.border='1px solid #4facfe'"
+onblur="this.style.border='1px solid #ccc'">
+
+<button onclick="login()"
+style="width:95%; padding:10px; margin-top:15px; border:none; border-radius:10px; background:#4facfe; color:white; font-size:16px; cursor:pointer; transition:0.3s;"
+onmouseover="this.style.transform='scale(1.05)'; this.style.background='#00c6ff'"
+onmouseout="this.style.transform='scale(1)'; this.style.background='#4facfe'">
+Login
 </button>
 
-<p id="msg" style="margin-top:20px; font-weight:bold;"></p>
+<p id="message" style="margin-top:20px; font-weight:bold;"></p>
 
-</div><script>
-// Entry animation
-window.onload = function(){
-    let box = document.getElementById("box");
-    box.style.transform = "scale(1)";
-    box.style.opacity = "1";
+</div>
+
+<style>
+@keyframes fadeIn {
+0% {opacity:0; transform:translateY(30px);}
+100% {opacity:1; transform:translateY(0);}
 }
 
-function login(){
-    let name = document.getElementById("name").value;
-    let pass = document.getElementById("password").value;
-    let msg = document.getElementById("msg");
-
-    if(name === "" || pass === ""){
-        msg.innerHTML = "Please fill all fields";
-        msg.style.color = "red";
-        return;
-    }
-
-    // Success animation
-    msg.style.opacity = "0";
-    setTimeout(() => {
-        msg.innerHTML = "@" + name + " welcome to login world 🌎";
-        msg.style.color = "green";
-        msg.style.transform = "translateY(10px)";
-        msg.style.transition = "0.5s";
-        msg.style.opacity = "1";
-    }, 300);
+@keyframes pop {
+0% {transform:scale(0.5); opacity:0;}
+100% {transform:scale(1); opacity:1;}
 }
-</script></body>
-</html>
+</style>
+
+<script>
+function login() {
+var username = document.getElementById("name").value;
+var password = document.getElementById("password").value;
+var msg = document.getElementById("message");
+
+if(username==="" || password===""){
+msg.innerHTML="Please enter name and password";
+msg.style.color="red";
+msg.style.animation="fadeIn 0.5s";
+}
+else{
+msg.innerHTML="@"+username+" welcome to login world 🌎";
+msg.style.color="green";
+msg.style.animation="pop 0.5s";
+}
+}
+</script>
+
+</body>
+    </html>
